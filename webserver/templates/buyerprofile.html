@@ -1,0 +1,89 @@
+
+<html>
+
+  <style>
+    body{
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+<body>
+  <h1>HouseMeetsU (Buyer Site)</h1>
+
+  <p><a href="/homepage">Log Out</a></p>
+
+  <fieldset>
+  <legend>List of All Properties:</legend>
+  <table>
+    <thead>
+      <th>Property ID</th>
+      <th>prop_type</th>
+      <th>lot_size</th>
+      <th>bathroom_n</th>
+      <th>bedroom_n</th>
+      <th>furnished</th>
+      <th>garage</th>
+      <th>address</th>
+      <th>city</th>
+      <th>state</th>
+      <th>zipcode</th>
+      <th>neighborhood</th>
+      <th>year_built</th>
+      <th>description</th>
+    </thead>
+    <tbody>
+      {% for p in Property %}
+      <tr>
+        <td>{{ p.p_id }} </td>
+        <td>{{ p.prop_type }}</td>
+        <td>{{ p.lot_size }}</td>
+        <td>{{ p.bathroom_n }}</td>
+        <td>{{ p.bedroom_n }}</td>
+        <td>{{ p.furnished }}</td>
+        <td>{{ p.garage }} </td>
+        <td>{{ p.address }}</td>
+        <td>{{ p.city }}</td>
+        <td>{{ p.state }}</td>
+        <td>{{ p.zipcode }}</td>
+        <td>{{ p.neighborhood }}</td>
+        <td>{{ p.year_built }}</td>
+        <td>{{ p.description }} </td>
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+  </fieldset>
+
+  <form method="POST" action="/Like">
+    <fieldset>
+    <legend>Which property do you like:</legend>
+    <br>Property ID:<br>
+    <input type="int" name="p_id">
+    <br><br>
+    <input type="submit" value="Like">
+  </fieldset>
+  </form>
+
+  <fieldset>
+  <legend>Which Properties I liked:</legend>
+  <table>
+    <thead>
+      <th>p_id</th>
+    </thead>
+    <tbody>
+      {% for p in Liked %}
+      <tr>
+        <td>{{ p.p_id }} </td>
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+  <fieldset>
+
+</body>
+
+
+</html>

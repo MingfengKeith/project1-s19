@@ -1,0 +1,132 @@
+
+<html>
+
+  <style>
+    body{
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+<body>
+  <h1>HouseMeetsU (Seller Site)</h1>
+
+  <p><a href="/homepage">Log Out</a></p>
+
+
+  <fieldset>
+  <legend>List of My Properties:</legend>
+  <table>
+    <thead>
+      <th>p_id</th>
+      <th>prop_type</th>
+      <th>lot_size</th>
+      <th>bathroom_n</th>
+      <th>bedroom_n</th>
+      <th>furnished</th>
+      <th>garage</th>
+      <th>address</th>
+      <th>city</th>
+      <th>state</th>
+      <th>zipcode</th>
+      <th>neighborhood</th>
+      <th>year_built</th>
+      <th>description</th>
+    </thead>
+    <tbody>
+      {% for p in Property %}
+      <tr>
+        <td>{{ p.p_id }} </td>
+        <td>{{ p.prop_type }}</td>
+        <td>{{ p.lot_size }}</td>
+        <td>{{ p.bathroom_n }}</td>
+        <td>{{ p.bedroom_n }}</td>
+        <td>{{ p.furnished }}</td>
+        <td>{{ p.garage }} </td>
+        <td>{{ p.address }}</td>
+        <td>{{ p.city }}</td>
+        <td>{{ p.state }}</td>
+        <td>{{ p.zipcode }}</td>
+        <td>{{ p.neighborhood }}</td>
+        <td>{{ p.year_built }}</td>
+        <td>{{ p.description }} </td>
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+  </fieldset>
+
+  <form method="POST" action="/Delete">
+    <fieldset>
+    <legend>Delete:</legend>
+    <br>Property ID:<br>
+    <input type="int" name="p_id">
+    <br><br>
+    <input type="submit" value="DELETE">
+  </fieldset>
+  </form>
+
+  <form method="POST" action="/Add_P">
+    <fieldset>
+    <legend>Listing New Property:</legend>
+    <br>prop_type:<br>
+    <input type="text" name="prop_type">
+    <br>lot_size:<br>
+    <input type="text" name="lot_size">
+    <br>bathroom_n:<br>
+    <input type="text" name="bathroom_n">
+    <br>bedroom_n:<br>
+    <input type="text" name="bedroom_n">
+    <br>furnished:<br>
+    <select name="furnished">
+      <option value=TRUE>TRUE</option>
+      <option value=FALSE>FALSE</option>
+    </select>
+    <br>garage:<br>
+    <select name="garage">
+      <option value=TRUE>TRUE</option>
+      <option value=FALSE>FALSE</option>
+    </select>
+    <br>Building:<br>
+    <select name="bldg_id">
+      <option value=1>361 w 121st st</option>
+      <option value=2>543 w 122nd st</option>
+      <option value=3>514 e 82nd st</option>
+      <option value=6>61 w 105th st</option>
+      <option value=7>125 w 96th st</option>
+      <option value=8>161 w 105th st</option>
+      <option value=9>200 w 109th st</option>
+      <option value=4>531 e 83rd st</option>
+      <option value=5>425 e 86th st</option>
+    </select>
+    <br><br>
+    <input type="submit" value="Add">
+  </fieldset>
+  </form>
+
+
+  <fieldset>
+  <legend>Who liked my properties:</legend>
+  <table>
+    <thead>
+      <th>p_id</th>
+      <th>b_username</th>
+      <th>b_email</th>
+    </thead>
+    <tbody>
+      {% for p in Liked %}
+      <tr>
+        <td>{{ p.p_id }} </td>
+        <td>{{ p.b_username }}</td>
+        <td>{{ p.b_email }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <fieldset>
+
+</body>
+
+
+</html>
